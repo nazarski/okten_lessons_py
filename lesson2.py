@@ -76,3 +76,55 @@ print_first()
 print_second()
 print_first()
 print_second()
+
+
+# генерируем лист с непарных чисел в порядке возрастания [1,3,5,7,9.....n]
+# задача сделать c него лист листов такого плана:
+#
+# [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]  => [ [1], [3,5], [7,9,11], [13,15,17,19] ]
+# [1, 3, 5, 7, 9, 11] => [[1], [3, 5], [7, 9, 11]]
+# [1, 3, 5, 7, 9]  => [ [1], [3,5], [7,9]]
+# [1, 3, 5, 7, 9, 11, 13]  => [[1], [3, 5], [7, 9, 11], [13]]
+
+
+def generate_list(max_num: int) -> list:
+    result_list = []
+    temp_list = []
+    list_length = 1
+    for i in range(1, max_num, 2):
+        temp_list.append(i)
+        if len(temp_list) == list_length:
+            result_list.append(temp_list)
+            list_length += 1
+            temp_list = []
+    return result_list
+
+
+print(generate_list(50))
+
+
+# прога, що виводить кількість кожного символа з введеної строки, наприклад:
+# st = 'as 23 fdfdg544'  # введена строка
+#
+# 'a' -> 1  # вивело в консолі
+# 's' -> 1
+# ' ' -> 2
+# '2' -> 1
+# '3' -> 1
+# 'f' -> 2
+# 'd' -> 2
+# 'g' -> 1
+# '5' -> 1
+# '4' -> 2
+def count_chars():
+    string_to_check = input('Give a string!: ')
+    char_to_count = input('Now, what char i shall count?: ')
+    counter = 0
+    for char in string_to_check:
+        if char == char_to_count:
+            counter += 1
+
+    print('We found ' + str(counter) + ' matches')
+
+
+count_chars()
